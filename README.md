@@ -1,32 +1,53 @@
-# KP_Vozd
-Курсовой  проект
-/project/app.js
-/project/config/db.config.js
-/project/middlewares/auth.js
-/project/models/request.js
-/project/models/user.js
-/project/package.json
-/project/public/admin/dashboard.html
-/project/public/client/index.html
-/project/public/shared/login.html
-/project/public/shared/register.html
-/project/routes/admin.js
-/project/routes/auth.js
-/project/routes/requests.js
-/project/server.js
+REST API для управления заявками
+Этот проект представляет собой RESTful API, разработанное с использованием PHP и фреймворка Slim. Оно предназначено для управления заявками (tickets), включая создание, чтение, обновление и удаление (CRUD) операций.
 
- Сервер: 127.0.0.1:3306
- База данных: DB
- Таблица: requests
+Функциональность
+API поддерживает следующие операции:
 
- SELECT * FROM `requests`
- Профилирование
-[ Построчное редактирование ] [ Изменить ] [ Анализ SQL запроса ] [ Создать PHP-код ] [ Обновить ]
-id	user_id	description	status	created_at	updated_at	
+Получение списка всех заявок (GET /tickets)
+Получение отдельной заявки по ID (GET /tickets/{id})
+Создание новой заявки (POST /tickets)
+Обновление существующей заявки (PUT /tickets/{id})
+Удаление заявки (DELETE /tickets/{id})
+Аналогичные операции поддерживаются для управления пользователями.
 
+Требования
+Для запуска этого проекта вам понадобятся:
 
+PHP >= 7.4
+Composer
+Веб-сервер с поддержкой PHP (например, Apache или Nginx)
+База данных MySQL
+Установка
+Клонируйте репозиторий:
 
-SELECT * FROM `users`
- Профилирование
-[ Построчное редактирование ] [ Изменить ] [ Анализ SQL запроса ] [ Создать PHP-код ] [ Обновить ]
-id	username	password	role	
+git clone https://github.com/<your_username>/<repository_name>.git
+Перейдите в директорию проекта:
+
+cd <repository_name>
+Установите необходимые зависимости с помощью Composer:
+
+composer install
+Настройте подключение к базе данных, отредактировав файл src/config.php.
+Запустите веб-сервер (например, встроенный сервер PHP):
+
+php -S localhost:8000 -t public
+Использование
+После запуска сервера вы сможете отправлять HTTP-запросы к следующим маршрутам:
+
+Метод	Маршрут	Описание
+GET	/tickets	Получить список всех заявок
+GET	/tickets/{id}	Получить отдельную заявку
+POST	/tickets	Создать новую заявку
+PUT	/tickets/{id}	Обновить заявку
+DELETE	/tickets/{id}	Удалить заявку
+Аналогично для пользователей:
+
+Метод	Маршрут	Описание
+GET	/users	Получить список всех пользователей
+GET	/users/{id}	Получить отдельного пользователя
+POST	/users	Создать нового пользователя
+PUT	/users/{id}	Обновить пользователя
+DELETE	/users/{id}	Удалить пользователя
+Лицензия
+Этот проект распространяется под лицензией MIT. См. файл LICENSE для подробностей.
