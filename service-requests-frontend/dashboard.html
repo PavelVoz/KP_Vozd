@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора - TechServicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="TechServicePro">
+                </a>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#all-requests">Все заявки</a></li>
+                        <li><a href="#users">Пользователи</a></li>
+                        <li><a href="#stats">Статистика</a></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span id="adminName"></span>
+                    <span class="admin-badge">Администратор</span>
+                    <button id="logoutBtn" class="btn btn-outline btn-small">Выйти</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-dashboard">
+        <div class="container">
+            <h1 class="dashboard-title">Панель администратора</h1>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalRequests">0</div>
+                    <div class="stat-label">Всего заявок</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeRequests">0</div>
+                    <div class="stat-label">Активные</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="usersCount">0</div>
+                    <div class="stat-label">Пользователи</div>
+                </div>
+            </div>
+            
+            <section id="all-requests" class="admin-section">
+                <h2>Управление заявками</h2>
+                <div class="requests-actions">
+                    <div class="requests-filter">
+                        <label for="adminFilterStatus">Статус:</label>
+                        <select id="adminFilterStatus">
+                            <option value="all">Все</option>
+                            <option value="new">Новые</option>
+                            <option value="in_progress">В работе</option>
+                            <option value="completed">Завершенные</option>
+                            <option value="cancelled">Отмененные</option>
+                        </select>
+                    </div>
+                    <div class="requests-search">
+                        <input type="text" id="adminSearch" placeholder="Поиск по описанию...">
+                        <button id="adminSearchBtn" class="btn btn-outline">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="admin-requests-list">
+                    <div class="requests-list-header">
+                        <div class="request-id">№</div>
+                        <div class="request-date">Дата</div>
+                        <div class="request-user">Пользователь</div>
+                        <div class="request-type">Тип</div>
+                        <div class="request-problem">Проблема</div>
+                        <div class="request-status">Статус</div>
+                        <div class="request-actions">Действия</div>
+                    </div>
+                    <div id="adminRequestsContainer" class="requests-container">
+                        <!-- Заявки будут загружаться здесь -->
+                    </div>
+                </div>
+            </section>
+            
+            <section id="users" class="admin-section" style="display: none;">
+                <h2>Управление пользователями</h2>
+                <div class="users-actions">
+                    <button id="addUserBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Добавить пользователя
+                    </button>
+                </div>
+                <div class="users-list">
+                    <div class="users-list-header">
+                        <div class="user-id">ID</div>
+                        <div class="user-name">Имя</div>
+                        <div class="user-email">Email</div>
+                        <div class="user-role">Роль</div>
+                        <div class="user-actions">Действия</div>
+                    </div>
+                    <div id="usersContainer" class="users-container">
+                        <!-- Пользователи будут загружаться здесь -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Модальное окно для изменения статуса заявки -->
+    <div id="changeStatusModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Изменение статуса заявки</h2>
+            <form id="changeStatusForm">
+                <input type="hidden" id="requestId">
+                <div class="form-group">
+                    <label for="newStatus">Новый статус</label>
+                    <select id="newStatus" name="newStatus" required>
+                        <option value="new">Новая</option>
+                        <option value="in_progress">В работе</option>
+                        <option value="completed">Завершена</option>
+                        <option value="cancelled">Отменена</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="statusComment">Комментарий</label>
+                    <textarea id="statusComment" name="statusComment" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-outline close-modal">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
